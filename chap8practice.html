@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Practice 8</title>
+  <style>
+    #my-button{
+      height: 50px;
+      width: 50px;
+      font-size: 30px;
+      border: none;
+      border-radius: 28px;
+    }
+    .js-odd{
+      background-color: blue;
+    }
+    .js-even{
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+  <h3 id="grettings"></h3>
+
+<button  id="my-button" onclick="buttonPressed()">0</button>
+<script>
+  let noOfTimesClicked = localStorage.getItem('noOfTimesClicked')||0;
+
+ function buttonPressed(){
+    noOfTimesClicked++;
+    localStorage.setItem('noOfTimesClicked',noOfTimesClicked);
+    updatebutton();
+ }
+
+ function updatebutton(){
+  let button = document.querySelector('#my-button');
+    if(noOfTimesClicked %2 === 0){
+      button.classList.remove('js-odd');
+      button.classList.add('js-even');
+    }
+    else{
+      button.classList.remove('js-even');
+      button.classList.add('js-odd');
+    }
+    button.innerText = noOfTimesClicked;
+ }
+
+
+
+
+
+
+
+
+
+
+
+  
+   function dogreeting(PersonName = "Dear"){
+   let mydate  = new Date();
+   let hours = mydate.getHours();
+   //let hours = 13;
+    let heading = document.querySelector('#grettings');
+    if(hours >5 && hours < 12){
+      heading.innerText =`Good Morgning ${PersonName}`;
+    }
+    else if(hours> 12 && hours< 18){
+      heading.innerText = `Good Afternoon ${PersonName}`;
+    }
+    else{
+      heading.innerText = `Good Night ${PersonName}`;
+    }
+   }
+    //document.querySelector('#grettings').innerText =""
+    dogreeting();
+  </script>
+</body>
+</html>
